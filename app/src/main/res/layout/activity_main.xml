@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="25dp"
+    android:layout_margin="10dp"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -70,18 +70,18 @@
             android:id="@+id/gender_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Firstname :"
+            android:text="@string/gender"
             />
         <CheckBox
             android:id="@+id/gender_male_chkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="M"/>
+            android:text="@string/gender_male"/>
         <CheckBox
             android:id="@+id/gender_female_chkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="F"/>
+            android:text="@string/gender_female"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,14 +93,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Add"
+            android:text="@string/add"
             android:onClick="addForm"
             />
         <Button
             android:id="@+id/clear_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear"
+            android:text="@string/clear"
             android:layout_margin="10dp"
             android:onClick="clearForm"
             />
@@ -108,7 +108,7 @@
             android:id="@+id/mix_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mix"
+            android:text="@string/mix"
             android:layout_margin="10dp"
             android:onClick="mixForm"
             />

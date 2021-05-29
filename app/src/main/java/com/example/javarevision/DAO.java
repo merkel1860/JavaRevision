@@ -8,7 +8,6 @@ public class DAO {
     private static DAO instance = new DAO();
 
     private DAO() {
-        instance = new DAO();
     }
 
     public static DAO getInstance() {
