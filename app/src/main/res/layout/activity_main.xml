@@ -94,7 +94,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/add"
-            android:onClick="addForm"
             />
         <Button
             android:id="@+id/clear_btn"
@@ -102,7 +101,6 @@
             android:layout_height="wrap_content"
             android:text="@string/clear"
             android:layout_margin="10dp"
-            android:onClick="clearForm"
             />
         <Button
             android:id="@+id/mix_btn"
@@ -110,7 +108,6 @@
             android:layout_height="wrap_content"
             android:text="@string/mix"
             android:layout_margin="10dp"
-            android:onClick="mixForm"
             />
     </LinearLayout>
 </LinearLayout>

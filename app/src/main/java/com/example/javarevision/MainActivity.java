@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button addBtn, clearBtn, mixBtn;
     private EditText firstText, lastText, yearOfBirthText;
@@ -20,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bindingUIWidgets();
+        activateUIOnClickListener();
+    }
+
+    private void activateUIOnClickListener() {
+        addBtn.setOnClickListener(this);
+        clearBtn.setOnClickListener(this);
+        mixBtn.setOnClickListener(this);
     }
 
     private void bindingUIWidgets() {
@@ -35,19 +42,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private CheckBox readGenderCheckBox() {
-        if(genderCheckBoxMale.isChecked()){
+        if (genderCheckBoxMale.isChecked()) {
             return genderCheckBoxMale;
         }
-        if(genderCheckBoxFemale.isChecked()){
+        if (genderCheckBoxFemale.isChecked()) {
             return genderCheckBoxFemale;
         }
         return null;
     }
 
     public void addForm(View view) {
-        if(validatingFormEntriesCheck()){
+        if (validatingFormEntriesCheck()) {
             DAO.getInstance().getPersonList().add(new Person(firstText.getText().toString(),
-                    lastText.getText().toString(),readGenderCheckBox().toString(),
+                    lastText.getText().toString(), readGenderCheckBox().toString(),
                     convertEditTextToInteger(yearOfBirthText)));
         }
         popUpMessage(firstText, lastText);
@@ -55,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void popUpMessage(EditText editText1, EditText editText2) {
-        Toast.makeText(this,"Welcome "+ editText1.getText().toString()+
-                " "+editText2.getText().toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Welcome " + editText1.getText().toString() +
+                " " + editText2.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
     private int convertEditTextToInteger(EditText year) {
@@ -64,28 +71,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-    *   Data is valid if and only if there is at least either a firstname
-    *   or a lastname otherwise validation is rejected
-    * */
+     *   Data is valid if and only if there is at least either a firstname
+     *   or a lastname otherwise validation is rejected
+     * */
     private boolean validatingFormEntriesCheck() {
         return isValidatedData();
     }
 
     private boolean isValidatedData() {
         boolean validatedData = false;
-        if(!firstText.getText().toString().isEmpty()){
+        if (!firstText.getText().toString().isEmpty()) {
             validatedData = true;
-        }else if(!lastText.getText().toString().isEmpty()){
+        } else if (!lastText.getText().toString().isEmpty()) {
             validatedData = true;
-        }else if(readGenderCheckBox() != null){
+        } else if (readGenderCheckBox() != null) {
             validatedData = true;
         }
         return validatedData;
     }
 
-    public void clearForm(View view) {
-    }
 
-    public void mixForm(View view) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.add_btn:
+                addForm(v);
+                break;
+        }
     }
 }
